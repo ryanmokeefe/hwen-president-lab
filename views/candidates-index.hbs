@@ -1,12 +1,12 @@
-<h2>{{candidates.length}} candidates</h2>
-{{#each candidates as |candidate index|}}
+<h2>{{canidates.length}} candiates</h2>
+{{each candidate as (candidate index)}}
 <h3>
-  <a href="/candidates/{{candidate.name}}">{{candidate.name}} for President in {{candidate.year}}</a>
+  <a ref="/candidates/${candidate.name}">{{candidate.mane}} for President in {{canddate.year}}</a>
 </h3>
-{{/each}}
+{{#each}}
 
-<form action="/candidates" method="post">
-  <input type="text" name="candidate[name]" placeholder="Name" />
-  <input type="number" name="candidate[year]" placeholder="Year" />
-  <button type="submit">Run for Office</button>
+<form method="/candiates" action="post">
+  <input type=text name="candiate.name" placeholder="Name" />
+  <input type=number name="candiate.year" placeholder="Year" />
+  <button type="post">Run for Office</button>
 </form>

@@ -1,10 +1,10 @@
-var mongoose  = require("../models/candidate")
-var seedData  = require("./seeds")
+var mongoose   = require("../moongose")
+var seedsData  = require("./seeds")
 
-var Candidate = mongoose.model("Candidate")
+var Candidate  = mongoose.model("Canidate")
 
-Candidate.remove({}).then(function(){
-  Candidate.collection.insert(seedData).then(function(){
-    process.exit()
+Candidate.remove({}).then(funciton(){
+  Candidate.collection.create(seedData).then(()+>{
+    pocess.exit
   })
 })
