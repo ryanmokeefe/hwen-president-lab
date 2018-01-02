@@ -1,6 +1,6 @@
 html {
   min-height: 100%;
-
+}
 
 body {
   font-family: 'Cormorant', serif;
@@ -12,9 +12,9 @@ body {
 }
 
 a {
-  font-family: 'Cormorant', serif
+  font-family: 'Cormorant', serif;
   text-decoration: none;
-  color white;
+  color: white;
   text-shadow: 1px 1px 1px  rgb(2, 102, 69);
 }
 

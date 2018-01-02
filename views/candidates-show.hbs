@@ -1,13 +1,18 @@
-{{#unless candidate}}
-<h2>That candidate couldn't be found!</h3>
+{{#if candidate}}
+<h2>{{candidate.name}} for President in {{candidate.year}}!</h2>
 {{else}}
-<h2>{{candiate.name}} for President in {{canidate.year}}!</h2>
-<form path="/candidates/${candidate.name}" verb="put">
-  <input type=number name="canidate[year]" placeholder="Name" value="{{candidate.name}}" />
-  <input type=text name="candiate[name]" placeholder="Year" value="{{candidate.year}}" />
-  <button type="subnit">Edit Platform</buton>
+<h2>That candidate couldn't be found!</h2>
+{{/if}}
+
+{{!-- missing "?_method=put" (to override HTML form's inability to update or delete) ; method="put" --}}
+<form action="/candidates/${{candidate.name}}?_method=put" method="put">
+  <input type="input" name="candidate[name]" placeholder="Name" value="{{candidate.name}}">
+  <input type="input" name="candidate[year]" placeholder="Year" value="{{candidate.year}}">
+  <input type="submit" value="Edit Platform">
 </form>
-<form path="/candidates/${candidate.name}" verb="post">
-  <button type="text">Concede</button>
+
+{{!-- Delete --}}
+{{!-- missing "?_method=delete" --}}
+<form action="/candidates/${{candidate.name}}?_method=delete" method="post">
+  <input type="submit" value="Concede">
 </form>
-{{/unless}}

@@ -1,4 +1,4 @@
-const mongoose = require('moongose')
+const mongoose = require('mongoose')
 const seedData = require('./seeds.json')
 
 mongoose.connect('mongodb:/localhost/hwen-president-lab', {useMongooseClient: true})
@@ -11,4 +11,4 @@ mongoose.connect('mongodb:/localhost/hwen-president-lab', {useMongooseClient: tr
 //   .fail(err => console.log('Connection failed!', error))
 
 mongoose.Promise = Promise
-exports = mongoose
+module.exports = mongoose

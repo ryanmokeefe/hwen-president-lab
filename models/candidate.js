@@ -1,11 +1,13 @@
-const mongoose = require('../db/conection')
+const mongoose = require('../db/connection')
 
-var CandidateSchema = {
-  name: Mongoose.Text,
-  year: Mongoose.Integer
-}
+// define a var as a - new mongoose.Schema({})
+const CandidateSchema = new mongoose.Schema({
+  name: String,
+  year: Number
+})
 
+// define candidate model:
+const Candidate = mongoose.model('Candidate', CandidateSchema)
 
-mongoose.model("Canditade", CandidateSchema)
-
-module.exports = mongoose
+// export Schema:
+module.exports = Candidate

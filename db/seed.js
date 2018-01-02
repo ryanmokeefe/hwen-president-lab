@@ -1,8 +1,8 @@
-// var mongoose   = require("../moongose")
+var mongoose   = require("../controllers/candidates")
 var seedData  = require("./seeds.json")
 
-// var Candidate  = mongoose.model("Candidate")
-const Candidate = require('./schema')
+var Candidate  = require("../models/candidate")
+// const Candidate = require('./schema')
 
 Candidate.remove({})
   .then(function () {

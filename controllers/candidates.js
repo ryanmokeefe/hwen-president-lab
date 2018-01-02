@@ -1,7 +1,8 @@
-// const mongoose  = require('./models/candidae')
+// const mongoose  = require('./models/candidate')
+const mongoose  = require('mongoose')
 // require express: 
 const express   = require('express')
-const Candidate = require('../db/schema')
+const Candidate = require('../models/candidate')
 const Router    = express.Router()
 
 
@@ -70,4 +71,4 @@ Router.put('/:name', (req, res) => {
   })
 })
 
-module.exports = Candidate
+module.exports = Router
