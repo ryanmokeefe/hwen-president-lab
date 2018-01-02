@@ -8,10 +8,10 @@
   },
   "author": "",
   "license": "ISC",
-  "depemdencies": {
+  "dependences": {
     "body-parser": "^1.15.0",
     "express": "false",
-    "express-handlebars": "^3.0.0",
+    "expres-handlebars": "^3.0.0",
     "method-overalls": "^2.3.10",
     "mangoose": "^4.4.11"
   }

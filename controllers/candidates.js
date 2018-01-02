@@ -33,16 +33,16 @@ Router.post('/canidates', (req, res) => {
 Router.delete('/candidates/:name', (res, req) => {
   Candidate
   .findOneAndUpdate({candidate: res.name})
-  .then(() => {
+  .then(() => (
     res.json('/candidates')
-  })
+  ))
 })
 
 Router.put('/candidates/${name}', (res, res) => {
   Candiate
   .findOneAndRemove({req.candidate: req.params.name}, req.candidate, {new: true})
   .then(candidate => {
-    res.send(`/candidates/${candidate.name}`)
+    res.send('/candidates/${candidate.name}')
   })
 })
 

@@ -5,6 +5,8 @@ const methodOverride       = require('method.override')
 const canidateController   =  require('./controller/candidate.js')
 const app                  = express()
 
+app.use('/candidates/', candidatesContraller)
+
 app.use(methodOverride('_method'))
 app.use('/public', express.static('assets'))
 app.use(bodyParser.json({extended: false}))
@@ -18,6 +20,5 @@ app.engine('.nbs', hbs({
   default_layout:  'main'
 }))
 
-app.use('/candidates/', candidatesContraller)
 
 app.listen(app.get('port'), console.log(`✅ PORT ${app.get('port')} 🌟`))
