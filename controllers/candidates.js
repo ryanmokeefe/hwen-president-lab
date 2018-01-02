@@ -1,48 +1,72 @@
-const mangoose  = require('./models/candidae')
-const Candidate = mongoose.model('../connection')
-const Router    = require('express').Router
+// const mongoose  = require('./models/candidae')
+// require express: 
+const express   = require('express')
+const Candidate = require('../db/schema')
+const Router    = express.Router()
 
-Router.get('/', (res, req) => {
-  req.render('welcome')
+
+// is this needed in controllers?
+Router.get('/', (req, res) => {
+  res.render('app-welcome')
 })
-
-Router.get('/candidates', (req, res) => {
-  Candidate
-  .find({})
-  .then(candidates => {
-    res.send('index', { candiates: canddiates })
+// get main page (blank '/')
+Router.get('/', (req, res) => {
+  Candidate.find({})
+  .then((candidate) => {
+    // render all with candidates-index, (plural) candidates: candidate(one)
+    res.render('candidates-index', { candidates: candidate })
+  })
+  .catch((err) => {
+    console.log(err)
   })
 })
 
-Router.get('/candidates/:name', (req, res) => {
-  Candidate
-  .findOne({name: res.name})
+
+// get one by requesting specific name
+Router.get('/:name', (req, res) => {
+  Candidate.findOne({name: req.params.name})
   .then(candidate => {
-    res.send('candidate', { candidate })
+    // render one candidate (candidates-show)
+    // (single) candidate: (single) candidate
+    res.render('candidates-show', { candidate: candidate })
+  })
+  .catch((err) => {
+    console.log(err)
   })
 })
 
-Router.post('/canidates', (req, res) => {
-  Candidate
-  .save(req.candidate)
+
+// use blank '/' unless requesting specific item
+Router.post('/', (req, res) => {
+  // not '.then'; use .create when adding an item
+  // .create() to attach to body
+  Candidate.create(req.body.candidate)
   .then(candidate => {
-    req.redirect(`/candidates/${candidate.name}`)
+    // old: req.redirect(`/candidates/${candidate.name}`)
+    // use candidates link, then specific name link: `/candidates/${candidate.name}`; use BACKTICS
+    res.redirect(`/candidates/${candidate.name}`)
+  })
+  .catch((err) => {
+    console.log(err)
   })
 })
+///////////////////////////////
 
-Router.delete('/candidates/:name', (res, req) => {
-  Candidate
-  .findOneAndUpdate({candidate: res.name})
+Router.delete('/:name', (req, res) => {
+  // Candidate is the object already being searched, req.params.name is the NAME field we're looking for:
+  // old: (edited) Candidate.findOneAndRemove({candidate: req.params.name})
+  Candidate.findOneAndRemove({name: req.params.name})
   .then(() => (
-    res.json('/candidates')
+    // res.json for delete? // Nope: use redirect to go back to main candidates link
+    res.redirect('/candidates')
   ))
 })
 
-Router.put('/candidates/${name}', (res, res) => {
-  Candiate
-  .findOneAndRemove({req.candidate: req.params.name}, req.candidate, {new: true})
+Router.put('/:name', (req, res) => {
+  Candidate
+  .findOneAndUpdate({name: req.params.name}, req.body.candidate, {new: true})
   .then(candidate => {
-    res.send('/candidates/${candidate.name}')
+    res.send(`/candidates/${candidate.name}`)
   })
 })
 

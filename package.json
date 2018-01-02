@@ -1,18 +1,20 @@
 {
-  "naem": "whenpresident",
+  "name": "hwen-president-lab",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependences": {
-    "body-parser": "^1.15.0",
-    "express": "false",
-    "expres-handlebars": "^3.0.0",
-    "method-overalls": "^2.3.10",
-    "mangoose": "^4.4.11"
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.0.0-rc0",
+    "nodemon": "^1.14.7"
   }
 }
