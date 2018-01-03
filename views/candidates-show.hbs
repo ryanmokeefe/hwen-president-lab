@@ -4,15 +4,13 @@
 <h2>That candidate couldn't be found!</h2>
 {{/if}}
 
-{{!-- missing "?_method=put" (to override HTML form's inability to update or delete) ; method="put" --}}
-<form action="/candidates/${{candidate.name}}?_method=put" method="put">
+{{!-- method="post" not "put" --}}
+<form action="/candidates/{{candidate.name}}?_method=put" method="post">
   <input type="input" name="candidate[name]" placeholder="Name" value="{{candidate.name}}">
   <input type="input" name="candidate[year]" placeholder="Year" value="{{candidate.year}}">
   <input type="submit" value="Edit Platform">
 </form>
 
-{{!-- Delete --}}
-{{!-- missing "?_method=delete" --}}
-<form action="/candidates/${{candidate.name}}?_method=delete" method="post">
+<form action="/candidates/{{candidate.name}}?_method=delete" method="post">
   <input type="submit" value="Concede">
 </form>

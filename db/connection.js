@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const seedData = require('./seeds.json')
 
-mongoose.connect('mongodb:/localhost/hwen-president-lab', {useMongooseClient: true})
+// { useMongoClient: true } is now default as of mongoose v5.
+mongoose.connect('mongodb://localhost/hwen-president-lab')
     .then(() => console.log(`Connection established to db`))
         .catch((err) => console.log('Connection failed!', error))
 
