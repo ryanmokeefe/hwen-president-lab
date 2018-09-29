@@ -15,7 +15,8 @@ Router.get('/', (req, res) => {
   Candidate.find({})
   .then((candidate) => {
     // render all with candidates-index, (plural) candidates: candidate(one)
-    res.render('candidates-index', { candidates: candidate })
+    res.render('candidates-index', { candidates: candidate 
+    })
   })
   .catch((err) => {
     console.log(err)
@@ -40,12 +41,16 @@ Router.get('/:name', (req, res) => {
 
 // use blank '/' unless requesting specific item
 Router.post('/', (req, res) => {
+
   // not '.then'; use .create when adding an item
   // .create() to attach to body
+
   Candidate.create(req.body.candidate)
   .then((candidate) => {
+
     // old: req.redirect(`/candidates/${candidate.name}`)
     // use candidates link, then specific name link: `/candidates/${candidate.name}`; use BACKTICS
+    
     res.redirect(`/candidates/${candidate.name}`)
   })
   .catch((err) => {
